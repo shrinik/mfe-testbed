@@ -1,0 +1,15 @@
+{
+  "name": "mfe-1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wrangler dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "wrangler": "^4.53.0"
+  }
+}
