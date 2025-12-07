@@ -24,7 +24,7 @@
         .header {
             grid-row-start: 1;
             grid-row-end: 2;
-            grid-column-start: 1;
+            grid-column-start: 2;
             grid-column-end: 3;
             text-align: center;
         }
@@ -33,6 +33,7 @@
             grid-row-end: 3;
             grid-column-start: 1;
             grid-column-end: 2;
+            text-align: left;
         }
         .content {
             grid-row-start: 2;
@@ -45,16 +46,41 @@
             height: 100%;
             border: none;
         }
+        .sidebar ul li {
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
     </style>
+    <script>
+        const NODE_CHANGE = "shell:nodeChange"
+        // Event Creation function
+        function createEvent(eventName, data) {
+            const event = new CustomEvent(eventName, {
+            detail: data,
+            bubbles: false // Don't need bubbling for this use case
+            });
+            return event
+        }
+        
+        function handleNodeClick(propertyName) {
+            const event = createEvent(NODE_CHANGE, propertyName)
+            window.dispatchEvent(event);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="header"><h1>Shell Application</h1></div>
         <div class="sidebar">
             <ul>
-                <li>Home</li>
-                <li>Blog</li>
-                <li>Projects</li>
+                <li onclick="handleNodeClick('Stockholm-Building-A')"><button>Stockholm-Building-A</button></li>
+                <li onclick="handleNodeClick('Stockholm-Building-B')"><button>Stockholm-Building-B</button></li>
+                <li onclick="handleNodeClick('Stockholm-Building-C')"><button>Stockholm-Building-C</button></li>
             </ul>
         </div>
         <div class="content">

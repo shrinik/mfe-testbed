@@ -7,10 +7,39 @@
     <style>
         body {
             background-color: whitesmoke;
+            text-align: center;
+        }
+        span {
+            font-weight: bold;
         }
     </style>
+    <script>
+        const NODE_CHANGE = "shell:nodeChange"
+        let nodeChangeHandler = null
+        
+        // Shell Events Subscription function
+        function subscribe(eventName, callback) {
+            nodeChangeHandler = event => callback(event.detail)
+            window.parent.addEventListener(eventName, nodeChangeHandler);
+        }
+
+        function cleanup() {
+            if (nodeChangeHandler) {
+                window.parent.removeEventListener(NODE_CHANGE, nodeChangeHandler);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            subscribe(NODE_CHANGE, (propertyName) => document.getElementById("node").textContent = propertyName);    
+        })        
+
+        window.addEventListener('pagehide', () => {
+            cleanup();
+        })
+    </script>
 </head>
 <body>
     <h1>Micro-frontend Application</h1>
+    <p>Selected Node: <span id="node"></span></p>
 </body>
 </html>

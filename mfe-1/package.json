@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "wrangler": "^4.53.0"
+  "devDependencies": {
+    "wrangler": "4.33.0"
   }
 }
