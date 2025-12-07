@@ -4,9 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shell</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        body {
+            background-color: lightblue;
+        }
+        .container {
+            display: grid;
+            grid-template-rows: 1fr 9fr;
+            grid-template-columns: 1fr 9fr;
+            width: 100vw;
+            height: 100vh;
+        }
+        .header {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            text-align: center;
+        }
+        .sidebar {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        .content {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        .content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Shell Application</h1>
-    <iframe src="/mfe/index.html"></iframe>
+    <div class="container">
+        <div class="header"><h1>Shell Application</h1></div>
+        <div class="sidebar">
+            <ul>
+                <li>Home</li>
+                <li>Blog</li>
+                <li>Projects</li>
+            </ul>
+        </div>
+        <div class="content">
+            <iframe src="/mfe/index.html"></iframe>
+        </div>
+    </div>
 </body>
 </html>
